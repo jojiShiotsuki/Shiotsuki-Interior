@@ -1,43 +1,65 @@
 <main class="mainContainer">
   <div class="dark-overlay">
     <%- include('partials/header') -%>
-    <div class="container mx-auto">
+    <h1 class="text-stone-950 feedTitle">Current Projects</h1>
+    <div class="flex container mx-auto justify-center">
+      <div class="flex justify-center mt-5 space-x-7"> <!-- Added space-y-5 to create space between cards -->
+        <% for(var i=0; i<posts.length; i++) {%>
+          <% if(posts[i].status.toLowerCase() == "in progress") { %>
+            <div class="card lg:card-side bg-base-100 shadow-xl">
+              <figure>
+                <div class="feedImgContainer">
+                  <img class="feedImg" src="<%= posts[i].image%>" alt="Post Image">
+                </div> <!-- Closed the div properly -->
+              </figure>
+              <div class="card-body bg-stone-950 text-white">
+                <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
+                <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
+                <h4>Address : <%= posts[i].address %></h4>
+                <h4>Status : <%= posts[i].status %></h4>
+                <h4>Date : <%= posts[i].formattedDate %></h4>
+                <div class="card-actions justify-end">
+                  <a class="btn btn-primary bg-yellow-900 hover:bg-yellow-800 border-none" href="/post/<%= posts[i]._id%>">Open</a>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</main>
+
+<section class="allProjectsSec">
+  <section class="allProjectContainer bg-stone-950">
+    <div class="container mx-auto flex">
+      <div class="flex justify-center mt-5 text-white">
+        <h2>Projects in Line</h2>
+      </div>
       <div class="flex justify-center mt-5">
         <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <% for(var i=0; i<posts.length; i++) {%>
-          <% if(posts[i].status.toLowerCase() == "in progress") { %>
-            <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
-            <a href="/post/<%= posts[i]._id%>">
-              <img class="w-full h-auto" src="<%= posts[i].image%>" alt="Post Image">
-            </a>
-            <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
-            <h4>Address : <%= posts[i].address %></h4>
-            <h4>Status : <%= posts[i].status %></h4>
-            <h4>Date : <%= posts[i].formattedDate %></h4>
+          <% for(var i=0; i<posts.length; i++) {%>
+            <div class="card lg:card-side bg-base-100 shadow-xl">
+              <figure>
+                <div class="feedImgContainer">
+                  <img class="feedImg" src="<%= posts[i].image%>" alt="Post Image">
+                </div> <!-- Closed the div properly -->
+              </figure>
+              <div class="card-body bg-stone-950 text-white">
+                <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
+                <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
+                <h4>Address : <%= posts[i].address %></h4>
+                <h4>Status : <%= posts[i].status %></h4>
+                <h4>Date : <%= posts[i].formattedDate %></h4>
+                <div class="card-actions justify-end">
+                  <a class="btn btn-primary bg-yellow-900 hover:bg-yellow-800 border-none" href="/post/<%= posts[i]._id%>">Open</a>
+                </div>
+              </div>
+            </div>
           <% } %>
-      <% } %>
         </ul>
+      </div>
     </div>
-  </div>
-<div>
-</main>
-  <div class="container mx-auto">
-    <div class="flex justify-center mt-5">
-      <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <% for(var i=0; i<posts.length; i++) {%>
-          <li class="mb-5">
-              <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
-              <a href="/post/<%= posts[i]._id%>">
-                <img class="w-full h-auto" src="<%= posts[i].image%>" alt="Post Image">
-              </a>
-              <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
-              <h4>Address : <%= posts[i].address %></h4>
-              <h4>Status : <%= posts[i].status %></h4>
-              <h4>Date : <%= posts[i].formattedDate %></h4>
-          </li>
-        <% } %>
-      </ul>
-
-    </div>
-  </div>
-  <%- include('partials/footer') -%>
+  </section>
+</section>
+<%- include('partials/footer') -%>
