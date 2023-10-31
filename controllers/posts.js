@@ -14,16 +14,16 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
-  
+      const postsForFeed = await Post.find({ user: req.user.id });
       // Format the time property in each post
       posts.forEach(post => {
         if (post.time instanceof Date) {
           // Format the time as "15:43pm"
-          post.formattedTime = post.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour24: true });
+          post.formattedTime = post.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
         }
       });
   
-      res.render("feed.ejs", { posts: posts });
+      res.render("feed.ejs", { posts: posts, user: req.user});
     } catch (err) {
       console.log(err);
     }
