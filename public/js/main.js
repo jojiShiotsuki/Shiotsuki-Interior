@@ -13,3 +13,19 @@ const currentPath = window.location.pathname;
       link.classList.add('text-gray-300', 'hover:bg-gray-700', 'hover:text-white');
     }
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Your Swiper initialization code here
+  new Swiper('.swiper-container', {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+  });
+});
