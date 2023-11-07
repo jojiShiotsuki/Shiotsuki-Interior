@@ -2,30 +2,37 @@
   <div class="dark-overlay">
     <%- include('partials/header') -%>
     <h1 class="text-stone-950 feedTitle">Current Projects</h1>
-    <div class="flex container mx-auto justify-center">
-      <div class="flex justify-center mt-5 space-x-7"> <!-- Added space-y-5 to create space between cards -->
+    <div class="swiper-container main-swiper">
+      <div class="swiper-wrapper">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if(posts[i].status.toLowerCase() == "in progress") { %>
-            <div class="card lg:card-side bg-base-100 shadow-xl">
-              <figure>
-                <div class="feedImgContainer">
-                  <img class="feedImg" src="<%= posts[i].image%>" alt="Post Image">
-                </div> <!-- Closed the div properly -->
-              </figure>
-              <div class="card-body bg-stone-900 text-white">
-                <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
-                <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
-                <h4>Address : <%= posts[i].address %></h4>
-                <h4>Status : <%= posts[i].status %></h4>
-                <h4>Date : <%= posts[i].formattedDate %></h4>
-                <div class="card-actions justify-end">
-                  <a class="btn btn-primary bg-yellow-900 hover:bg-yellow-800 border-none" href="/post/<%= posts[i]._id%>">Open</a>
+            <div class="swiper-slide">
+              <div class="card lg:card-side bg-base-100 shadow-xl">
+                <figure>
+                  <div class="feedImgContainer">
+                    <img class="feedImg" src="<%= posts[i].image%>" alt="Post Image">
+                  </div>
+                </figure>
+                <div class="card-body bg-stone-900 text-white">
+                  <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
+                  <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
+                  <h4>Address : <%= posts[i].address %></h4>
+                  <h4>Status : <%= posts[i].status %></h4>
+                  <h4>Date : <%= posts[i].formattedDate %></h4>
+                  <div class="card-actions justify-end">
+                    <a class="btn btn-primary bg-yellow-900 hover:bg-yellow-800 border-none" href="/post/<%= posts[i]._id%>">Open</a>
+                  </div>
                 </div>
               </div>
             </div>
           <% } %>
         <% } %>
       </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+      <!-- Add Navigation -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </div>
 </main>

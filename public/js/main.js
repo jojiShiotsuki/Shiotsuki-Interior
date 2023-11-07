@@ -29,3 +29,19 @@ document.addEventListener('DOMContentLoaded', function () {
     },
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Initialize Swiper
+  var swiper = new Swiper('.main-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20, // Adjust as needed
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  });
+});
