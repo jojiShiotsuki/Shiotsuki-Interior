@@ -5,7 +5,7 @@
     <div class="swiper-container main-swiper">
       <div class="swiper-wrapper">
         <% for(var i=0; i<posts.length; i++) {%>
-          <% if(posts[i].status.toLowerCase() == "in progress") { %>
+          <% if(posts[i].status.toLowerCase() == "ongoing") { %>
             <div class="swiper-slide">
               <div class="card lg:card-side bg-base-100 shadow-xl">
                 <figure>
@@ -37,30 +37,33 @@
   </div>
 </main>
 
+<% const pendingProjects = posts.filter(post => post.status === "pending"); %> <!-- Filter pending projects -->
+<% if(pendingProjects.length > 0) { %> <!-- Check if there are pending projects -->
 <section class="allProjectsSec">
   <section class="allProjectContainer bg-stone-900">
-    <h2 class="feedTitle allProjectsTitle text-white">Projects</h2>
+    <h2 class="feedTitle allProjectsTitle text-white">Projects on hold</h2>
     <div class="container mx-auto">
       <div  class="swiper-container all-projects-swiper">
         <div class="swiper-wrapper">
-          <% for(var i = 0; i < posts.length; i += 2) {%>
-            <div class="swiper-slide">
-              <div class="flex justify-around">
-                <% for(var j = i; j < i + 2 && j < posts.length; j++) {%>
-                  <a class="border-none " href="/post/<%= posts[j]._id%>">
-                    <div class="card w-96 bg-zinc-700 hover:bg-zinc-600 shadow-xl text-white">
-                      <div class="card-body">
-                        <h2 class="card-title"><%= posts[j].title %></h2>
-                        <h4 class="text-sm">Assembly Time: <%= posts[j].formattedTime %></h4>
-                        <h4 class="text-sm">Address: <%= posts[j].address %></h4>
-                        <h4 class="text-sm">Status: <%= posts[j].status %></h4>
-                        <h4 class="text-sm">Date: <%= posts[j].formattedDate %></h4>
+          <% for(var i = 0; i < pendingProjects.length; i += 2) { %>
+              <div class="swiper-slide">
+                <div class="flex justify-around">
+                  <% for(var j = i; j < i + 2 && j < pendingProjects.length; j++) {%>
+                    <% const project = pendingProjects[j]; %> <!-- Get the current project -->
+                    <a class="border-none " href="/post/<%= project._id %>">
+                      <div class="card w-96 bg-zinc-700 hover:bg-zinc-600 shadow-xl text-white">
+                        <div class="card-body">
+                          <h2 class="card-title"><%= project.title %></h2>
+                          <h4 class="text-sm">Assembly Time: <%= project.formattedTime %></h4>
+                          <h4 class="text-sm">Address: <%= project.address %></h4>
+                          <h4 class="text-sm">Status: <%= project.status %></h4>
+                          <h4 class="text-sm">Date: <%= project.formattedDate %></h4>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                <% } %>
+                    </a>
+                  <% } %>
+                </div>
               </div>
-            </div>
           <% } %>
         </div>
         <!-- Add Pagination -->
@@ -72,5 +75,48 @@
     </div>
   </section>
 </section>
+<% } %> <!-- Close swiper condition -->
+
+
+<% const completedProjects = posts.filter(post => post.status === "completed"); %> <!-- Filter completed projects -->
+<% if(completedProjects.length > 0) { %> <!-- Check if there are completed projects -->
+<section class="allProjectsSec">
+  <section class="allProjectContainer bg-gray-100">
+    <h2 class="feedTitle allProjectsTitle text-black">Finished projects</h2>
+    <div class="container mx-auto">
+      <div  class="swiper-container all-projects-swiper">
+        <div class="swiper-wrapper">
+          <% for(var i = 0; i < completedProjects.length; i += 2) { %>
+              <div class="swiper-slide">
+                <div class="flex justify-around">
+                  <% for(var j = i; j < i + 2 && j < completedProjects.length; j++) {%>
+                    <% const project = completedProjects[j]; %> <!-- Get the current completed project -->
+                    <% console.log("Completed project:", project); %>
+                    <a class="border-none " href="/post/<%= project._id %>">
+                      <div class="card w-96 bg-zinc-700 hover:bg-zinc-600 shadow-xl text-white">
+                        <div class="card-body">
+                          <h2 class="card-title"><%= project.title %></h2>
+                          <h4 class="text-sm">Assembly Time: <%= project.formattedTime %></h4>
+                          <h4 class="text-sm">Address: <%= project.address %></h4>
+                          <h4 class="text-sm">Status: <%= project.status %></h4>
+                          <h4 class="text-sm">Date: <%= project.formattedDate %></h4>
+                        </div>
+                      </div>
+                    </a>
+                  <% } %>
+                </div>
+              </div>
+          <% } %>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+</section>
+<% } %> <!-- Close swiper condition -->
 
 <%- include('partials/footer') -%>

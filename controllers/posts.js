@@ -64,6 +64,9 @@ module.exports = {
         // Create a Date object with a default date and the specified time
         time = new Date(2000, 0, 1, hours, minutes);
       }
+      
+      // Convert the status to lowercase or uppercase for case-insensitive comparison
+      const status = req.body.status.toLowerCase(); // or .toUpperCase()
 
       await Post.create({
         title: req.body.title,
@@ -72,7 +75,7 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
-        status: req.body.status,
+        status: status,
         time: time,
         assignedDate: req.body.assignedDate,
         address: req.body.address,

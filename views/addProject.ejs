@@ -12,7 +12,11 @@
       </label>
 
       <label for="status" class="input input-bordered flex items-center gap-2 logInFormInput">Status
-        <input type="text" class="form-control" id="status" name="status">
+        <select id="status" name="status" class="form-control">
+          <option value="pending">Pending</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="completed">Completed</option>
+        </select>
       </label>
 
       <label for="address" class="input input-bordered flex items-center gap-2 logInFormInput">Address
