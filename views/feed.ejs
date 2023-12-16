@@ -41,7 +41,7 @@
 <% if(pendingProjects.length > 0) { %> <!-- Check if there are pending projects -->
 <section class="allProjectsSec">
   <section class="allProjectContainer bg-stone-900">
-    <h2 class="feedTitle allProjectsTitle text-white">Projects on hold</h2>
+    <h2 class="feedTitle allProjectsTitle text-white">Pending Projects</h2>
     <div class="container mx-auto">
       <div  class="swiper-container all-projects-swiper">
         <div class="swiper-wrapper">
@@ -50,17 +50,23 @@
                 <div class="flex justify-around">
                   <% for(var j = i; j < i + 2 && j < pendingProjects.length; j++) {%>
                     <% const project = pendingProjects[j]; %> <!-- Get the current project -->
-                    <a class="border-none " href="/post/<%= project._id %>">
-                      <div class="card w-96 bg-zinc-700 hover:bg-zinc-600 shadow-xl text-white">
-                        <div class="card-body">
-                          <h2 class="card-title"><%= project.title %></h2>
-                          <h4 class="text-sm">Assembly Time: <%= project.formattedTime %></h4>
-                          <h4 class="text-sm">Address: <%= project.address %></h4>
-                          <h4 class="text-sm">Status: <%= project.status %></h4>
-                          <h4 class="text-sm">Date: <%= project.formattedDate %></h4>
+                    <div class="card lg:card-side bg-base-100 shadow-xl">
+                      <figure>
+                        <div class="feedImgContainer">
+                          <img class="feedImg" src="<%= project.image %>" alt="Post Image"> <!-- Use project instead of posts[j] -->
+                        </div>
+                      </figure>
+                      <div class="card-body bg-yellow-900 text-white">
+                        <h2 class="text-2xl font-bold mb-3"><%= project.title %></h2> <!-- Use project instead of posts[j] -->
+                        <h4>Assembly Time : <%= project.formattedTime %></h4> <!-- Use project instead of posts[j] -->
+                        <h4>Address : <%= project.address %></h4> <!-- Use project instead of posts[j] -->
+                        <h4>Status : <%= project.status %></h4> <!-- Use project instead of posts[j] -->
+                        <h4>Date : <%= project.formattedDate %></h4> <!-- Use project instead of posts[j] -->
+                        <div class="card-actions justify-end">
+                          <a class="btn btn-primary bg-stone-900 hover:bg-stone-800 border-none" href="/post/<%= project._id %>">Open</a> <!-- Use project instead of posts[j] -->
                         </div>
                       </div>
-                    </a>
+                    </div>
                   <% } %>
                 </div>
               </div>
@@ -91,18 +97,23 @@
                 <div class="flex justify-around">
                   <% for(var j = i; j < i + 2 && j < completedProjects.length; j++) {%>
                     <% const project = completedProjects[j]; %> <!-- Get the current completed project -->
-                    <% console.log("Completed project:", project); %>
-                    <a class="border-none " href="/post/<%= project._id %>">
-                      <div class="card w-96 bg-zinc-700 hover:bg-zinc-600 shadow-xl text-white">
-                        <div class="card-body">
-                          <h2 class="card-title"><%= project.title %></h2>
-                          <h4 class="text-sm">Assembly Time: <%= project.formattedTime %></h4>
-                          <h4 class="text-sm">Address: <%= project.address %></h4>
-                          <h4 class="text-sm">Status: <%= project.status %></h4>
-                          <h4 class="text-sm">Date: <%= project.formattedDate %></h4>
+                    <div class="card lg:card-side bg-base-100 shadow-xl">
+                      <figure>
+                        <div class="feedImgContainer">
+                          <img class="feedImg" src="<%= project.image %>" alt="Post Image"> <!-- Use project instead of posts[j] -->
+                        </div>
+                      </figure>
+                      <div class="card-body bg-stone-900 text-white">
+                        <h2 class="text-2xl font-bold mb-3"><%= project.title %></h2> <!-- Use project instead of posts[j] -->
+                        <h4>Assembly Time : <%= project.formattedTime %></h4> <!-- Use project instead of posts[j] -->
+                        <h4>Address : <%= project.address %></h4> <!-- Use project instead of posts[j] -->
+                        <h4>Status : <%= project.status %></h4> <!-- Use project instead of posts[j] -->
+                        <h4>Date : <%= project.formattedDate %></h4> <!-- Use project instead of posts[j] -->
+                        <div class="card-actions justify-end">
+                          <a class="btn btn-primary bg-yellow-900 hover:bg-yellow-800 border-none" href="/post/<%= project._id %>">Open</a> <!-- Use project instead of posts[j] -->
                         </div>
                       </div>
-                    </a>
+                    </div>
                   <% } %>
                 </div>
               </div>

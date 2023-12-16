@@ -109,7 +109,7 @@ module.exports = {
       );
   
       console.log("Status updated:", updatedPost.status);
-      res.redirect(`/post/${req.params.id}`);
+      res.redirect("/feed");
     } catch (err) {
       console.log(err);
     }
