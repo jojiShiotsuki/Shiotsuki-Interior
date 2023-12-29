@@ -2,7 +2,7 @@
   <div class="dark-overlay">
     <%- include('partials/header') -%>
     <h1 class="text-stone-950 feedTitle">Current Projects</h1>
-    <div class="swiper-container main-swiper">
+    <div  class="swiper-container all-projects-swiper">
       <div class="swiper-wrapper">
         <% for(var i=0; i<posts.length; i++) {%>
           <% if(posts[i].status.toLowerCase() == "ongoing") { %>

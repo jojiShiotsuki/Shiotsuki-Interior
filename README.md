@@ -1,4 +1,3 @@
-
 # Shiotsuki Interior Project
 
 Welcome to the Shiotsuki Interior project repository! This project is a full-stack web application designed for interior designers and architects to streamline project management and showcase their work effectively.
@@ -17,7 +16,7 @@ Shiotsuki Interior aims to provide users with a seamless platform to showcase th
 
 ## Technologies Used
 
-- **Frontend:** EJS (Embedded JavaScript) templating language, Tailwind CSS, Daisy UI.
+- **Frontend:** EJS (Embedded JavaScript) templating language, Tailwind CSS, Daisy UI, Will add React.js Soon!
   
 - **Backend:** Node.js, Express.js.
   
