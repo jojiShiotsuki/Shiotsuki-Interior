@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
 	display: flex;
 	flex-direction: column;
@@ -36,39 +40,51 @@ body {
 	width: 500px;
 	height: 600px;
 	box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.5);
-	border-radius: 0px 10px 10px 0px;
+	border-radius: 10px 10px 10px 10px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	background-color: #91819;
+	
 }
 .logIntitle{
-	width: 300px;
+	width: 400px;
 	height: 40px;
 	box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.5);
 	border-radius: 10px 10px 0px 0px;
-	background-color: white;
+	background-color: #fd6d4d;
+	color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .logInFormContainer{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 300px;
-	height: 300px;
+	width: 400px;
+	height: 400px;
 	border-radius: 0px 0px 10px 10px;
 	box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
 	margin-bottom: 8%;
+	background-color: #050507;
 }
 /* layout */
 /*butons*/
 .submitButton{
 	width: 100%;
+
 }
 /*form*/
 .logInFormInput{
 	margin-bottom: 2%;
 }
+
+
+/* colros */
+/* orange : #ff5733 */
+/* white : #ffffff */
+/* dark white : #fOfOfO */
+/* light grey : #b8b8b8 */
+/* gray : #707070 */
