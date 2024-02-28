@@ -3,7 +3,7 @@
   <div class="flex justify-center mt-5">
     <div class="lg:w-1/2">
       <h2 class="text-2xl font-bold mb-3"><%= post.title %></h2>
-      <img class="w-full h-auto mb-3" src="<%= post.image %>" alt="Post Image">
+      <img class="w-full h-auto object-cover mb-3" src="<%= post.image %>" alt="Post Image">
       <div class="flex justify-between items-center mb-3">
         <form
           action="/post/likePost/<%= post.id %>?_method=PUT"

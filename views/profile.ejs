@@ -1,41 +1,27 @@
 <%- include('partials/header') -%>
+
 <div class="flex flex-col items-center justify-center h-screen">
-  <section>
-    <h2>Add a project</h2>
-  </section>
+    <p class="font-bold">User Name: <%= user.userName %></p>
+    <p class="font-bold">Email: <%= user.email %></p>
 
-  <!-- <section>
-    <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-
-      <label for="title" class="input input-bordered flex items-center gap-2 logInFormInput">Title
-      <input type="text" class="form-control" id="title" name="title">
-      </label>
-
-      <label for="caption" class="input input-bordered flex items-center gap-2 logInFormInput">Caption
-      <textarea class="form-control resize-none w-full" id="caption" name="caption"></textarea>
-      </label>
-
-      <label for="imgUpload" class="input input-bordered flex items-center gap-2 logInFormInput">Image
-      <input type="file" class="form-control" id="imageUpload" name="file">
-    </label>
-          
-      <button type="submit" class="btn btn-primary submitButton" value="Upload">Submit</button>
-
-    </form>
-  </section> -->
-
-  <section>
-	
-  </section>
+    <section>
+        <!-- Your content goes here -->
+    </section>
   
-  <!-- <ul class="row list-unstyled">
-  <% for(var i=0; i<posts.length; i++) {%>
-    <li class="col-6 justify-content-between mt-5">
-      <a href="/post/<%= posts[i]._id%>">
-        <img class="img-fluid" src="<%= posts[i].image%>">
-      </a>
-    </li>
-  <% } %>
-  </ul> -->
+    <!-- Example of using Tailwind CSS classes for styling -->
+	<div class="container mx-auto">
+		<div class="flex justify-center mt-5">
+		  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+			<% for(var i=0; i<posts.length; i++) {%>
+			  <li class="mb-5">
+				<a href="/post/<%= posts[i]._id%>">
+				  <img class="w-full h-auto" src="<%= posts[i].image%>" alt="Post Image">
+				</a>
+			  </li>
+			<% } %>
+		  </ul>
+		</div>
+	  </div>
 </div>
+
 <%- include('partials/footer') -%>

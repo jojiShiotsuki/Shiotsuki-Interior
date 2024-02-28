@@ -8,17 +8,25 @@
     <form action="/post/createPost" enctype="multipart/form-data" method="POST">
 
       <label for="title" class="input input-bordered flex items-center gap-2 logInFormInput">Title
-      <input type="text" class="form-control" id="title" name="title">
+        <input type="text" class="form-control" id="title" name="title">
+      </label>
+
+      <label for="status" class="input input-bordered flex items-center gap-2 logInFormInput">Status
+        <input type="text" class="form-control" id="status" name="status">
+      </label>
+
+      <label for="time" class="input input-bordered flex items-center gap-2 logInFormInput">Time of assembly
+        <input type="time" class="form-control" id="time" name="time">
       </label>
 
       <label for="caption" class="input input-bordered flex items-center gap-2 logInFormInput">Caption
-      <textarea class="form-control resize-none w-full" id="caption" name="caption"></textarea>
+        <textarea class="form-control resize-none w-full" id="caption" name="caption"></textarea>
       </label>
 
       <label for="imgUpload" class="input input-bordered flex items-center gap-2 logInFormInput">Image
-      <input type="file" class="form-control" id="imageUpload" name="file">
-    </label>
-          
+        <input type="file" class="form-control" id="imageUpload" name="file">
+      </label>
+ 
       <button type="submit" class="btn btn-primary submitButton" value="Upload">Submit</button>
 
     </form>

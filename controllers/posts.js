@@ -14,6 +14,15 @@ module.exports = {
   getFeed: async (req, res) => {
     try {
       const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+  
+      // Format the time property in each post
+      posts.forEach(post => {
+        if (post.time instanceof Date) {
+          // Format the time as "15:43pm"
+          post.formattedTime = post.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour24: true });
+        }
+      });
+  
       res.render("feed.ejs", { posts: posts });
     } catch (err) {
       console.log(err);
@@ -33,6 +42,17 @@ module.exports = {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
+      const timeString = req.body.time;
+      let time = null;
+
+      if (timeString) {
+        // Split the time string into hours and minutes
+        const [hours, minutes] = timeString.split(':').map(Number);
+
+        // Create a Date object with a default date and the specified time
+        time = new Date(2000, 0, 1, hours, minutes);
+      }
+
       await Post.create({
         title: req.body.title,
         image: result.secure_url,
@@ -40,6 +60,8 @@ module.exports = {
         caption: req.body.caption,
         likes: 0,
         user: req.user.id,
+        status: req.body.status,
+        time: time,
       });
       console.log("Post has been added!");
       res.redirect("/feed");
