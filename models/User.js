@@ -5,13 +5,15 @@ const UserSchema = new mongoose.Schema({
   userName: { type: String, unique: true },
   email: { type: String, unique: true },
   password: String,
-  image: {
+  position: {
     type: String,
     required: true,
   },
+  image: {
+    type: String,
+  },
   cloudinaryId: {
     type: String,
-    required: true,
   },
 });
 
