@@ -96,6 +96,57 @@ module.exports = {
       console.log(err);
     }
   },
+  updateStatus: async (req, res) => {
+    try {
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { status: req.body.status },
+        { new: true } // This option returns the updated document
+      );
+  
+      console.log("Status updated:", updatedPost.status);
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  updateTime: async (req, res) => {
+    try {
+      // Convert the time string to a Date object
+      const time = new Date(`2000-01-01T${req.body.time}`);
+  
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { time: time },
+        { new: true } // This option returns the updated document
+      );
+  
+      console.log("Time updated:", updatedPost.time);
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  updateDate: async (req, res) => {
+    try {
+      // Convert the time string to a Date object
+      const date = req.body.assignedDate ? new Date(req.body.assignedDate) : undefined;
+  
+      const updatedPost = await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        { assignedDate: date },
+        { new: true } // This option returns the updated document
+      );
+  
+      console.log("Date updated:", updatedPost.assignedDate);
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  
+  
   deletePost: async (req, res) => {
     try {
       // Find post by id

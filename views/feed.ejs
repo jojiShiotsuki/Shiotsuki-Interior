@@ -4,15 +4,15 @@
     <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <% for(var i=0; i<posts.length; i++) {%>
         <li class="mb-5">
-          <a href="/post/<%= posts[i]._id%>">
             <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
-            <img class="w-full h-auto" src="<%= posts[i].image%>" alt="Post Image">
+            <a href="/post/<%= posts[i]._id%>">
+              <img class="w-full h-auto" src="<%= posts[i].image%>" alt="Post Image">
+            </a>
             <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
             <%=console.log(posts[i].formattedTime )%>
             <h4>Status : <%= posts[i].status %></h4>
             <h4>Date : <%= posts[i].formattedDate %></h4>
             <%= console.log( posts[i].user.userName)  %>
-          </a>
         </li>
       <% } %>
     </ul>
