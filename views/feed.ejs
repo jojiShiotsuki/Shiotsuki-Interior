@@ -10,10 +10,13 @@
             <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
             <%=console.log(posts[i].formattedTime )%>
             <h4>Status : <%= posts[i].status %></h4>
+            <h4>Date : <%= posts[i].formattedDate %></h4>
+            <%= console.log( posts[i].user.userName)  %>
           </a>
         </li>
       <% } %>
     </ul>
+
   </div>
 </div>
 <%- include('partials/footer') -%>

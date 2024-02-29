@@ -13,13 +13,17 @@ module.exports = {
   },
   getFeed: async (req, res) => {
     try {
-      const posts = await Post.find().sort({ createdAt: "desc" }).lean();
+      const posts = await Post.find().sort({ formattedDate: "asc" }).lean();
       const postsForFeed = await Post.find({ user: req.user.id });
       // Format the time property in each post
       posts.forEach(post => {
         if (post.time instanceof Date) {
           // Format the time as "15:43pm"
           post.formattedTime = post.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+        if (post.assignedDate instanceof Date) {
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          post.formattedDate = post.assignedDate.toLocaleDateString('en-US', options);
         }
       });
   
@@ -32,6 +36,14 @@ module.exports = {
     try {
       const post = await Post.findById(req.params.id);
       const comments = await Comment.find({post: req.params.id}).sort({ createdAt: "desc" }).lean();
+        if (post.time instanceof Date) {
+          // Format the time as "15:43pm"
+          post.formattedTime = post.time.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        }
+        if (post.assignedDate instanceof Date) {
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+          post.formattedDate = post.assignedDate.toLocaleDateString('en-US', options);
+        }
       res.render("post.ejs", { post: post, user: req.user, comments: comments});
     } catch (err) {
       console.log(err);
@@ -62,6 +74,7 @@ module.exports = {
         user: req.user.id,
         status: req.body.status,
         time: time,
+        assignedDate: req.body.assignedDate,
       });
       console.log("Post has been added!");
       res.redirect("/feed");

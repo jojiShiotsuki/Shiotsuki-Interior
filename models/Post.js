@@ -15,7 +15,6 @@ const PostSchema = new mongoose.Schema({
   },
   caption: {
     type: String,
-    required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -33,6 +32,10 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  assignedDate: {
+    type: Date,
+    required: true,
+  }
 });
 
 module.exports = mongoose.model("Post", PostSchema);
