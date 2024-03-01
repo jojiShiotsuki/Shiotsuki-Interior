@@ -24,9 +24,13 @@ connectDB();
 //Using EJS for views
 app.set("view engine", "ejs");
 
+
 //Static Folder
 app.use(express.static("public"));
-
+app.use('/public/js', (req, res, next) => {
+  res.type('application/javascript');
+  next();
+});
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -58,6 +62,8 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/post", postRoutes);
 app.use("/comment", commentRoutes);
+
+
 
 //Server Running
 app.listen(process.env.PORT, () => {

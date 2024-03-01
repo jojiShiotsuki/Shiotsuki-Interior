@@ -75,6 +75,7 @@ module.exports = {
         status: req.body.status,
         time: time,
         assignedDate: req.body.assignedDate,
+        address: req.body.address,
       });
       console.log("Post has been added!");
       res.redirect("/feed");

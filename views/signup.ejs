@@ -17,36 +17,36 @@
     </main>
         <section class="cardContainer">
           <section class="card">
-            <section class="logIntitle">
-              <span class="titleSpan btn-primary">SHIOTSUKI INTERIOR</span>
-            </section>
-            <section class="logInFormContainer">
+            <section class="signUpFormContainer">
+              <h1 class="titleSpan">SHIOTSUKI INTERIOR</h1>
               <form action="/signup"  method="POST">
 
-                <label for=" userName" class="form-label">User Name</label>
+                <label for=" userName" class="form-label"><span class="text-gray-400">User Name</span></label>
                 <input type="text" class="input input-bordered flex items-center gap-2 logInFormInput" id="userName" name="userName">
 
 
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <label for="exampleInputEmail1" class="form-label"><span class="text-gray-400">Email address</span></label>
                 <input type="email" class="input input-bordered flex items-center gap-2 logInFormInput" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
 
 
-                <label for="password" class="form-label">Password</label>
+                <label for="password" class="form-label"><span class="text-gray-400">Password</span></label>
                 <input type="password" class="input input-bordered flex items-center gap-2 logInFormInput" id="password" name="password">
 
 
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <label for="confirmPassword" class="form-label"><span class="text-gray-400">Confirm Password</span></label>
                 <input type="password" class="input input-bordered flex items-center gap-2 logInFormInput" id="confirmPassword" name="confirmPassword">
 
-                <label for="position" class="form-label">Position</label>
+                <label for="position" class="form-label"><span class="text-gray-400">Position</span></label>
                 <input type="text" class="input input-bordered flex items-center gap-2 logInFormInput" id="position" name="position">
 
-                <button type="submit" class="btn btn-primary submitButton">Submit</button>
+                <button type="submit" class="btn bg-gray-900 hover:bg-gray-500 text-white submitButton">Submit</button>
               </form>
+              <section class="memberCreateContainerSignUp">
+                <span class="text-gray-400">Already have an account?</span>
+                <a class="link link-primary text-gray-700 hover:text-gray-950" href="/"> log In here</a>
+              </section>
             </section>
-            <section class="memberCreateContainer">
-              <span>Already have an account?</span>
-              <a class="link link-primary" href="/"> log In here</a>
-            </section>
+        </section>
+        <section class="logInImg">
         </section>
       </section>
