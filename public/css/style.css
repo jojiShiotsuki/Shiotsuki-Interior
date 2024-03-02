@@ -38,7 +38,11 @@
   }
   .feedTitle{
 	text-align: center;
-	font-size: 50px;
+	font-size: 40px;
+  }
+  .allProjectsTitle{
+	margin-top: 4%;
+	margin-bottom: 4%;
   }
 /*Card*/
 .cardContainer{
@@ -93,6 +97,10 @@
 .memberCreateContainerSignUp{
 	margin-top: 0%;
 }
+.allProjectCard{
+	display: flex;
+
+}
 /* layout */
 .mainContainer{
 	background-image: url('/imgs/pexels-gdtography-911758.jpg');
@@ -116,6 +124,10 @@
 	position: relative;
 	border: 30px solid #f5f5f5;
 	border-radius: 50px;
+}
+.allProjectDesc{
+	display: flex;
+	flex-direction: column;
 }
 .blueprintCard{
 	color: white;

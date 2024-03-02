@@ -12,7 +12,7 @@
                   <img class="feedImg" src="<%= posts[i].image%>" alt="Post Image">
                 </div> <!-- Closed the div properly -->
               </figure>
-              <div class="card-body bg-stone-950 text-white">
+              <div class="card-body bg-stone-900 text-white">
                 <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
                 <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
                 <h4>Address : <%= posts[i].address %></h4>
@@ -31,35 +31,57 @@
 </main>
 
 <section class="allProjectsSec">
-  <section class="allProjectContainer bg-stone-950">
-    <div class="container mx-auto flex">
-      <div class="flex justify-center mt-5 text-white">
-        <h2>Projects in Line</h2>
-      </div>
-      <div class="flex justify-center mt-5">
-        <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <% for(var i=0; i<posts.length; i++) {%>
-            <div class="card lg:card-side bg-base-100 shadow-xl">
-              <figure>
-                <div class="feedImgContainer">
-                  <img class="feedImg" src="<%= posts[i].image%>" alt="Post Image">
-                </div> <!-- Closed the div properly -->
-              </figure>
-              <div class="card-body bg-stone-950 text-white">
-                <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
-                <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
-                <h4>Address : <%= posts[i].address %></h4>
-                <h4>Status : <%= posts[i].status %></h4>
-                <h4>Date : <%= posts[i].formattedDate %></h4>
-                <div class="card-actions justify-end">
-                  <a class="btn btn-primary bg-yellow-900 hover:bg-yellow-800 border-none" href="/post/<%= posts[i]._id%>">Open</a>
-                </div>
+  <section class="allProjectContainer bg-stone-900">
+    <h2 class="feedTitle allProjectsTitle text-white">Projects</h2>
+    <div class="container mx-auto">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <% for(var i = 0; i < posts.length; i += 2) {%>
+            <div class="swiper-slide">
+              <div class="flex justify-around">
+                <% for(var j = i; j < i + 2 && j < posts.length; j++) {%>
+                  <a class="border-none " href="/post/<%= posts[j]._id%>">
+                    <div class="card w-96 bg-zinc-700 hover:bg-zinc-600 shadow-xl text-white">
+                      <div class="card-body">
+                        <h2 class="card-title"><%= posts[j].title %></h2>
+                        <h4 class="text-sm">Assembly Time: <%= posts[j].formattedTime %></h4>
+                        <h4 class="text-sm">Address: <%= posts[j].address %></h4>
+                        <h4 class="text-sm">Status: <%= posts[j].status %></h4>
+                        <h4 class="text-sm">Date: <%= posts[j].formattedDate %></h4>
+                      </div>
+                    </div>
+                  </a>
+                <% } %>
               </div>
             </div>
           <% } %>
-        </ul>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
       </div>
+      <script>
+        // Initialize Swiper
+        new Swiper('.swiper-container', {
+          slidesPerView: 1, // Change this to 2
+          spaceBetween: 10,
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+        });
+      </script>
     </div>
   </section>
 </section>
+
+
+
+
 <%- include('partials/footer') -%>

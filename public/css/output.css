@@ -2264,6 +2264,15 @@ html {
   line-height: 1.25rem;
 }
 
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
 .card.image-full :where(figure) {
   overflow: hidden;
   border-radius: inherit;
@@ -2563,10 +2572,18 @@ html {
   line-height: 1.25rem;
 }
 
+.card-compact .card-title {
+  margin-bottom: 0.25rem;
+}
+
 .card-normal .card-body {
   padding: var(--padding-card, 2rem);
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.card-normal .card-title {
+  margin-bottom: 0.75rem;
 }
 
 .mx-auto {
@@ -2612,6 +2629,10 @@ html {
 
 .h-screen {
   height: 100vh;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .w-full {
@@ -2662,6 +2683,10 @@ html {
   justify-content: space-between;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
@@ -2678,6 +2703,12 @@ html {
   --tw-space-x-reverse: 0;
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.space-x-5 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(1.25rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
 .space-x-7 > :not([hidden]) ~ :not([hidden]) {
@@ -2724,14 +2755,19 @@ html {
   background-color: var(--fallback-n,oklch(var(--n)/var(--tw-bg-opacity)));
 }
 
-.bg-stone-950 {
+.bg-stone-900 {
   --tw-bg-opacity: 1;
-  background-color: rgb(12 10 9 / var(--tw-bg-opacity));
+  background-color: rgb(28 25 23 / var(--tw-bg-opacity));
 }
 
 .bg-yellow-900 {
   --tw-bg-opacity: 1;
   background-color: rgb(113 63 18 / var(--tw-bg-opacity));
+}
+
+.bg-zinc-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(63 63 70 / var(--tw-bg-opacity));
 }
 
 .fill-current {
@@ -2860,7 +2896,12 @@ html {
 
 .feedTitle{
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
+}
+
+.allProjectsTitle{
+  margin-top: 4%;
+  margin-bottom: 4%;
 }
 
 /*Card*/
@@ -2924,6 +2965,10 @@ html {
   margin-top: 0%;
 }
 
+.allProjectCard{
+  display: flex;
+}
+
 /* layout */
 
 .mainContainer{
@@ -2949,6 +2994,11 @@ html {
   position: relative;
   border: 30px solid #f5f5f5;
   border-radius: 50px;
+}
+
+.allProjectDesc{
+  display: flex;
+  flex-direction: column;
 }
 
 .blueprintCard{
@@ -3066,6 +3116,11 @@ html {
 .hover\:bg-yellow-800:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(133 77 14 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-zinc-600:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(82 82 91 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-950:hover {

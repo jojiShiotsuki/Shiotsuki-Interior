@@ -1,7 +1,7 @@
 {
-  "name": "binary-upload-boom",
+  "name": "shiotsuki-interior",
   "version": "1.0.0",
-  "description": "100Devs Social Network",
+  "description": "Website for the staff of Shiotsuki Interior",
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
