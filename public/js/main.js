@@ -16,7 +16,7 @@ const currentPath = window.location.pathname;
 
 document.addEventListener('DOMContentLoaded', function () {
   // Your Swiper initialization code here
-  new Swiper('.swiper-container', {
+  var allProjectsSwiper = new Swiper('.all-projects-swiper', {
     slidesPerView: 1,
     spaceBetween: 10,
     navigation: {
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize Swiper
-  var swiper = new Swiper('.main-swiper', {
+  var mainSwiper = new Swiper('.main-swiper', {
     slidesPerView: 1,
     spaceBetween: 20, // Adjust as needed
     pagination: {

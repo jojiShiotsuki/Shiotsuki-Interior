@@ -157,9 +157,9 @@ module.exports = {
       // Delete post from db
       await Post.remove({ _id: req.params.id });
       console.log("Deleted Post");
-      res.redirect("/addProject");
+      res.redirect("/feed");
     } catch (err) {
-      res.redirect("/addProject");
+      res.redirect("/feed");
     }
   },
 };
