@@ -17,7 +17,7 @@ Shiotsuki Interior aims to provide users with a seamless platform to showcase th
 
 ## Technologies Used
 
-- **Frontend:** EJS (Embedded JavaScript) templating language, Tailwind CSS, Daisy UI.
+- **Frontend:** EJS (Embedded JavaScript) templating language, Tailwind CSS, Daisy UI, Will add React.js Soon!
   
 - **Backend:** Node.js, Express.js.
   
