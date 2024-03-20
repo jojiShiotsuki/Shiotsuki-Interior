@@ -1,6 +1,6 @@
 # Shiotsuki Interior Project
 
-Welcome to the Shiotsuki Interior project repository! This project is a full-stack web application designed for interior designers and architects to streamline project management and showcase their work effectively.
+Welcome to the Shiotsuki Interior project repository! This project is a full-stack web application designed for interior designers, architects, and construction firms, to streamline project management and showcase their work effectively.
 
 ## Project Overview
 
