@@ -1,28 +1,53 @@
 <%- include('partials/header') -%>
 
-<div class="flex flex-col items-center justify-center h-screen">
-    <p class="font-bold">User Name: <%= user.userName %></p>
-    <p class="font-bold">Email: <%= user.email %></p>
-  
-    <!-- Example of using Tailwind CSS classes for styling -->
-	<div class="container mx-auto">
-		<div class="flex justify-center mt-5">
-		  <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-			<% for(var i=0; i<posts.length; i++) {%>
-			  <li class="mb-5">
-				  <h2 class="text-2xl font-bold mb-3"><%= posts[i].title %></h2>
-				  <a href="/post/<%= posts[i]._id%>">
-				  	<img class="w-full h-auto" src="<%= posts[i].image%>" alt="Post Image">
-				  </a>
-				  <h4>Address : <%= posts[i].address %></h4>
-				  <h4>Assembly Time : <%= posts[i].formattedTime %></h4>
-				  <h4>Status : <%= posts[i].status %></h4>
-				  <h4>Date : <%= posts[i].formattedDate %></h4>
-			  </li>
-			<% } %>
-		  </ul>
-		</div>
-	  </div>
+<%
+// Custom sorting function to sort by status and then by date
+function customSort(a, b) {
+  const order = { "ongoing": 0, "pending": 1, "completed": 2 };
+
+  // First, compare statuses
+  if (order[a.status] !== order[b.status]) {
+    return order[a.status] - order[b.status];
+  } else {
+    // If statuses are the same, compare dates
+    const dateA = new Date(a.formattedDate);
+    const dateB = new Date(b.formattedDate);
+    return dateA - dateB;
+  }
+}
+
+// Sort posts using the custom sorting function
+posts.sort(customSort);
+%>
+
+<div class="grid-cols-1 sm:grid md:grid-cols-3 profileContainer">
+  <% for(var i=0; i<posts.length; i++) { %>
+    <div class="mx-3 mt-6 flex flex-col rounded-lg bg-white text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0 profileCard">
+      <div class="cardImgContainer">
+        <a class="imgContainer" href="/post/<%= posts[i]._id %>">
+          <img class="rounded-t-lg cardImg" src="<%= posts[i].image %>" alt="blueprint image" />
+        </a>
+      </div>
+      <div class="p-6 bg-stone-900 cardInfoContainer">
+        <h5 class="mb-2 text-xl font-medium leading-tight cardInfo"><%= posts[i].title %></h5>
+        <p class="mb-4 text-base cardInfo">
+          Address : <%= posts[i].address %>
+        </p>
+        <p class="mb-4 text-base cardInfo">
+          Assembly Time : <%= posts[i].formattedTime %>
+        </p>
+        <p class="mb-4 text-base cardInfo">
+          Status : <%= posts[i].status %>
+        </p>
+        <p class="mb-4 text-base cardInfo">
+          Date : <%= posts[i].formattedDate %>
+        </p>
+      </div>
+      <div class="mt-auto border-t-2 border-neutral-100 px-6 py-3 text-center text-surface/75 dark:border-white/10 dark:text-neutral-300">
+        <small>Last updated 3 mins ago</small>
+      </div>
+    </div>
+  <% } %>
 </div>
 
 <%- include('partials/footer') -%>
